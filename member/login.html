@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+</head>
+<body>
+    <!-- 导航 -->
+    <header class="header">
+        <div class="left_img">
+            <a href="">
+                <img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2020/4/2/86f141a8-3876-4568-86f0-3c343430775c.gif" alt="">
+            </a>
+        </div>
+        <div class="right_img">
+            <p>
+                <i>|</i>
+                欢迎登陆
+            </p>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content_img">
+            <img src="./images/login_pic1.png" alt="">
+        </div>
+        <div class="content_box">
+            <div>
+                <ul>
+                    <li class="msg font_14 font_e3 hei_20"></li>
+                    <li class="form-group">
+                        <input type="text"  name="username" placeholder="手机号/用户名/邮箱">
+                        <i class="iconfont icon-geren"></i>
+                    </li>
+                    <li class="second form-group">
+                        <input type="password" name="password" id="" placeholder="登录密码">
+                        <i class="iconfont icon-mima"></i>
+                    </li>
+                    <li>
+                        <button id="btn">登 录</button>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./images/QQ.png" alt="">
+                            QQ
+                        </a>
+                        <a href="">
+                            <img src="./images/wechat.png" alt="">
+                            微信
+                        </a>
+                    </li>
+                    <li class="last">
+                        <span><a href="./register.html" class="reg">免费注册</a></span>
+                        <span class="forget">忘记密码？</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alertBox" id="alertBox">
+            <!-- 登录 -->
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="footerBottom">
+            <div class="question">
+                <ul>
+                    购物指南
+                    <li><a>格力境外购买须知</a></li>
+                    <li><a>免责声明</a></li>
+                </ul>
+                <ul>
+                    售后服务
+                    <li><a href="">服务生效</a></li>
+                    <li><a href="">安装/维修</a></li>
+                </ul>
+                <ul>
+                    常见问题
+                    <li><a href="">空调内机条码获取方法</a></li>
+                    <li><a href="">订单常见问题说明</a></li>
+                    <li><a href="">空调常见问题说明</a></li>
+                    <li><a href="">冰箱常见问题说明</a></li>
+                </ul>
+                <ul>
+                    联系我们
+                    <li><a href="">联系我们</a></li>
+                </ul>
+                <ul>
+                    服务查询
+                    <li><a href="">配送服务查询</a></li>
+                </ul>
+                <ul>
+                    商城支付
+                    <li><a href="">商城支付</a></li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <p>珠海格力电器股份有限公司版权所有 粤ICP备05006515号</p>
+                <img src="./images/footer_04.png" alt="">
+            </div>
+        </div>
+    </footer>
+</body>
+<script type="module">
+    import ajax from './ajax.js';
+    var oBtn = document.getElementById("btn");
+    var oInput = document.querySelectorAll(".form-group input");
+    var oAlert = document.getElementById("alertBox");
+  
+    oBtn.onclick = function(){
+      ajax({
+        type:"post",
+        url:"login.php",
+        data :{
+          username:oInput[0].value,
+          password:oInput[1].value
+        },
+        success: function(msg){
+          // console.log(msg);
+          var obj = JSON.parse(msg);
+          if(obj.code){
+            oAlert.style.display = "block";
+          }else{
+            oAlert.style.display= "block";
+          }
+          oAlert.style.display = "block";
+          oAlert.innerHTML = obj.msg;
+        },
+        error: function(msg){
+          console.log(msg);
+        }
+      })
+      document.onclick = function(){
+            oAlert.style.display = "none";
+        }
+    }
+    
+  </script>
+</html>

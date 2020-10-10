@@ -1,0 +1,374 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body{
+    background: #fafafa
+}
+li{
+  list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+img:hover{
+    opacity: 0.8;
+}
+header .tHeader{
+    height: 35px;
+    background-color: #eeeeee;
+}
+header .tHeader .topHeader{
+    width: 1200px;
+    height: 35px;
+    background-color:#eeeeee ;
+    margin: 0 35px;
+}
+header .tHeader .topHeader .leftTop{
+    width: 291px;
+    height: 35px;
+    margin-left: 50px;
+    float: left;
+    line-height: 35px;
+}
+header .tHeader .topHeader .leftTop ul li{
+    float: left;
+    font-size: 12px;
+    color:#C8C8C8;
+}
+header .tHeader .topHeader .leftTop ul li a{
+    color: #CC0000;
+}
+header .tHeader .topHeader .leftTop ul li:first-child a{
+    margin-left: 10px;
+}
+header .tHeader .topHeader .leftTop ul li span{
+    margin: 0 10px;
+}
+header .tHeader .topHeader .rightTop{
+    width: 540px;
+    height: 35px;
+    float: right;
+    line-height: 35px;
+}
+header .tHeader .topHeader .rightTop ul li{
+    float: left;
+    font-size: 12px;
+    color: #C8C8C8;
+    padding: 0 8px;
+}
+header .tHeader .topHeader .rightTop ul li a{
+    color: #747474;
+}
+header .tHeader .topHeader .rightTop ul li span{
+    margin: 5px 0 0 10px;
+}
+header .tHeader .topHeader .rightTop ul li .collect{
+    color: #828282;
+}
+header .tHeader .topHeader .rightTop ul li .service{
+    color: #828282;
+    font-size: 14px;
+}
+header .headerImg{
+    width: 1200px;
+    height: 110px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+header .headerImg .left_img{
+    width: 210px;
+    height: 80px;
+    margin-top: 10px;
+    float: left;
+}
+header .headerImg .left_img img{
+    width: 174px;
+    height: 100%;
+}
+header .headerImg .right_img{
+    width: 140px;
+    height: 100px;
+    float: left;
+    line-height: 100px;
+    font-size: 24px;
+    color: #747474;
+    margin-right: 50px;
+}
+/* 中间内容 */
+main{
+    width: 980px;
+    /* height: 700px; */
+    min-height: 400px;
+    margin: 10px auto;
+}
+main .tabTitle{
+    width: 100%;
+    height: 45px;
+}
+main .tabTitle ul{
+    width: 300px;
+    margin: 0;
+    padding: 3px 0px 0px 0px;
+    overflow: hidden;
+}
+main .tabTitle ul li{
+    float: left;
+    width: 140px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+    padding-bottom: 7px;
+    font-size: 14px;
+    color: #747474;
+}
+main .tabTitle ul .active{
+    background-color: #FFF;
+    border: 1px solid #e8e8e8;
+    border-top: 2px solid #2daae4;
+    border-bottom: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2daae4;
+}
+main .tabBox{
+    min-height: 500px;
+    overflow: hidden;
+    text-align: left;
+    background: #fff;
+    margin: 0px auto;
+    padding: 20px;
+    margin-top: -1px;
+    border: 1px #e8e8e8 solid;
+}
+main .tabBox .tabForm{
+    width: 750px;
+    min-height: 200px;
+    float: left;
+    margin: 30px 10px;
+    /* display: none; */
+}
+main .tabBox .tabForm ul li{
+    margin: 0;
+    padding-top: 9px;
+    height: 60px;
+    line-height: 34px;
+}
+main .tabBox .tabForm ul li span{
+    width: 170px;
+    height: 35px;
+    line-height: 35px;
+    text-align: right;
+    float: left;
+    padding-right: 10px;
+}
+main .tabBox .tabForm #code{
+    width:180px;
+    height: 35px;
+}
+main .tabBox .tabForm #verify{
+    display: inline-block;
+    width: 60px;
+    height: 35px;
+    border: 1px solid #e8e8e8;
+}
+.textfield{
+    position: relative;
+    min-width: 280px;
+    max-width: 650px;
+    float: left;
+}
+.textfield input{
+    font-family: Microsoft Yahei;
+    color: #474747;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    border: 1px solid #e8e8e8;
+    background: #fff;
+    border-radius: 2px;
+    width: 277px;
+}
+.textfield i{
+    display: inline-block;
+    font-size: 18px;
+    text-align: center;
+    position: absolute;
+    right: 2px;
+    top: 0px;
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    color: #c7c7c7;
+}
+main .tabBox .tabForm ul li p{
+    margin-left: 175px;
+    font-size: 12px;
+    color: #747474;
+   
+}
+main .tabBox .tabForm ul li p input{
+     vertical-align: middle;
+     margin: 3px 3px 3px 4px;
+}
+main .tabBox .tabForm ul li p a{
+    color: #747474;
+}
+main .tabBox .tabForm ul li button{
+    width: 260px;
+    height: 40px;
+    background-color: #CC0000;
+    border: none;
+    margin:30px 0 0 180px;
+    color: #fff;   
+}
+main .tabBox .tabForm ul li button:hover{
+    background-color: orange;
+}
+main .tabBox .emailReg{
+    width: 750px;
+    min-height: 200px;
+    float: left;
+    margin: 30px 10px;
+    display: none;
+}
+main .tabBox .emailReg ul li{
+    margin: 0;
+    padding-top: 9px;
+    height: 60px;
+    line-height: 34px;
+}
+main .tabBox .emailReg ul li span{
+    width: 170px;
+    height: 35px;
+    line-height: 35px;
+    text-align: right;
+    float: left;
+    padding-right: 10px;
+}
+main .tabBox .emailReg ul li p{
+    margin-left: 175px;
+    font-size: 12px;
+    color: #747474;
+}
+main .tabBox .emailReg ul li p input{
+    vertical-align: middle;
+    margin: 3px 3px 3px 4px;
+}
+main .tabBox .emailReg ul li p a{
+   color: #747474;
+}
+main .tabBox .emailReg ul li .check{
+    color: #CC0000;
+    font-size: 12px;
+}
+main .tabBox .emailReg ul li button{
+    width: 260px;
+    height: 40px;
+    background-color: #CC0000;
+    border: none;
+    margin:30px 0 0 180px;
+    color: #fff;   
+}
+main .tabBox .emailReg ul li button:hover{
+    background-color: orange;
+}
+main .alertBox{
+    width: 500px;
+    height: 200px;
+    background-color: lawngreen;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    line-height: 200px;
+    position: fixed;
+    top: 50px;
+    left: 400px;
+    display: none;
+}
+/* 底部 */
+footer .footerBottom{
+    width: 1200px;
+    margin: 0 auto;
+}
+footer .footerBottom{
+    width: 1200px;
+    height: 177px;
+    border-top: 1px solid #e2e2e2;
+    margin: 0 auto;
+    background-color: #fff;
+}
+footer .footerBottom .question{
+    width: 950px;
+    height: 117px;
+    margin: 0 auto;
+    padding: 37px 90px 0 150px
+}
+footer .footerBottom .question ul{
+    float: left;
+    width: 150px;
+    line-height: 26px;
+    font-size: 14px;
+    margin-right: -25px;
+}
+footer .footerBottom .question ul li a{
+    font-size: 12px;
+    color: #b2b2b2;
+}
+footer .footerBottom .bottom{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 66px 0 30px 21px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+footer .footerBottom .bottom p{
+    font-size: 12px;
+    color:#b2b2b2;
+}
