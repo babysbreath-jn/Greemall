@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/goods.css">
+    <script src="./js/jquery-1.11.3.js"></script>
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="./js/require.js"></script>
+    <script>
+        // 添加数据
+        $(function(){
+
+            sc_msg();
+            sc_num();
+
+            $.ajax({
+                url:"goods.json",
+                success:function(arr){
+                    var str = ``;
+                    for(var i = 0; i < arr.length;i++){
+                        str += `<div class="product">
+                                    <div class="big_img">
+                                        <a href="./details.html" target="_blank">
+                                            <img src="${arr[i].img}" style="width: 220px; height: 220px;">
+                                        </a>
+                                    </div>
+                                    <div class="n_font">
+                                        <p class="fl">
+                                            <a target="_blank" href="">
+                                                ${arr[i].a}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="score">
+                                        <span class="over_ell">
+                                            <a href="" target="_blank" class="over_ell" title="格力董明珠店">${arr[i].title}</a>
+                                        </span>
+                                    </div>
+                                    <div class="price">
+                                        <strong>${arr[i].strong}</strong>
+                                        <i class="iconfont icon-baoyoux"></i><br>
+                                        <span style="word-break: keep-all">&nbsp;已有<span style="color: #ff0000">${arr[i].num}</span>人购买</span>
+                                    </div>
+                                    <div class="score">
+                                        <a class="car" id="${arr[i].id}">加入购物车</a>
+                                    </div>
+                                </div>`
+                    }
+                    $(".search_list").html(str);
+                },
+                error:function(msg){
+                    console.log(msg);
+                }
+            })
+
+            // 给加入购物车按钮添加点击
+            $(".search_list").on("click",".car",function(){
+                var id = this.id;
+                var first = !($.cookie("goods"));
+                if(first){
+                    $.cookie("goods",JSON.stringify([{id:id,num:1}]),{
+                        expirse:7
+                    })
+                }else{
+                    var cookieArr = JSON.parse($.cookie("goods"));
+                    var same = false;
+                    for(var i = 0;i < cookieArr.length;i++){
+                        if(cookieArr[i].id == id){
+                            same = true;
+                            break;
+                        }
+                    }
+                    same ? cookieArr[i].num++ : cookieArr.push({id:id,num:1});
+
+                    $.cookie("goods",JSON.stringify(cookieArr),{
+                        expirse:7
+                    })
+                }
+                // console.log(id)
+                sc_msg();
+                sc_num();
+            })
+
+            $(".buttonShop").click(function(){
+                $(".trolley").css("display","block")
+            })
+
+            $(".trolley").mouseleave(function(){
+                $(".trolley").css("display","none")
+            })
+            
+
+            function sc_msg(){
+                var cookieStr = $.cookie("goods");
+                // console.log(cookieStr)
+                if(!cookieStr){
+                    return;
+                }
+                $.ajax({
+                    url:"goods.json",
+                    success:function(arr){
+                        var cookieArr = JSON.parse(cookieStr);
+                        var newArr = [];
+                        for(var i = 0; i < arr.length;i++){
+                            for(var j = 0; j < cookieArr.length;j++){
+                                if(cookieArr[j].id == arr[i].id){
+                                    arr[i].num = cookieArr[j].num;
+                                    newArr.push(arr[i]);
+                                    break;
+                                }
+                            }
+                        }
+                        // console.log(cookieArr)
+                        // console.log(newArr)
+                        var obj = ``;
+                        for(var i = 0; i < newArr.length;i++){
+                            obj += `<li id="${newArr[i].id}">
+                                <div class="leftBox">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <div class="imgBox">
+                                    <img src="${newArr[i].img}" alt="">
+                                </div>
+                                <div class="centerBox">
+                                    <p>${newArr[i].a}</p>
+                                    <p class="color">${newArr[i].color}</p>
+                                </div>
+                                <div class="rightBox">
+                                    <p><span>${newArr[i].strong}</span>*${newArr[i].num}</p>
+                                    <a class="delete">删除</a>
+                                </div>
+                            </li>`
+                        }
+                        $(".content ul").html(obj);
+                    },
+                    error:function(msg){
+                        console.log(msg);
+                    }
+                })
+            }
+            //删除
+            $(".content ul").on("click", ".delete", function(){
+                var id = $(this).closest("li").attr("id");
+                var cookieArr = JSON.parse($.cookie("goods"));
+                for(var i = 0; i < cookieArr.length; i++){
+                    if(cookieArr[i].id == id){
+                        cookieArr.splice(i,1)
+                        break;
+                    }
+                }
+                if(cookieArr.length){
+                  $.cookie("goods",JSON.stringify(cookieArr),function(){
+                      expirse:7
+                  })
+                }else{
+                  $.cookie("goods",null)
+                }
+               
+                sc_num();
+            })
+
+            function sc_num(){
+                var cookieStr = $.cookie("goods");
+                var sum = 0;
+                if(cookieStr){
+                    var cookieArr = JSON.parse(cookieStr);
+                    for(var i = 0;i < cookieArr.length;i++){
+                        sum += cookieArr[i].num; 
+                        console.log(sum)
+                    }
+                   
+                }
+                $(".buttonShop .sum").html((sum));
+                console.log(cookieStr)
+            }
+
+            var oCheck = document.getElementById("checkbox");
+            var inputs = document.getElementsByTagName("input");
+            oCheck.onclick = function(){
+                if(oCheck.checked){
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].checked = true;    //每个复选框设置为勾选状态
+                    }
+                }else{
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].checked = false;    //每个复选框设置为勾选状态
+                    }
+                }
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="tHeader">
+            <div class="topHeader">
+                <div class="leftTop">
+                    <ul>
+                        <li>
+                            <a href="">登录</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">注册</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">移动端下载</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">卖家移动端下载</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rightTop">
+                    <ul>
+                        <li>
+                            <a href="./index.html">商城首页</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">我的订单</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">开店申请</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">注册分销商</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="iconfont icon-shoucang collect"></i>我的收藏
+                            </a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="iconfont icon-05 service"></i>客服中心
+                            </a>
+                            <span>|</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>  
+        <div class="cHeader">
+            <div class="centerHeader">
+                <div class="leftCenter">
+                    <a href=""><img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2020/4/2/86f141a8-3876-4568-86f0-3c343430775c.gif" alt=""></a>
+                </div>
+                <div class="center">
+                    <div class="leftCen">
+                        <div class="option">
+                            <span>商品</span>
+                            <i class="iconfont icon-RectangleCopy"></i>
+                        </div>
+                        <div class="middle">
+                            <input type="text" placeholder="请输入你的信息">
+                        </div>
+                        <button class="rightBtn">
+                            <i class="iconfont icon-sousuo"></i>
+                        </button>
+                    </div>
+                    <div class="rightCen">
+                        <img src="./images/headicon.png" alt="">
+                    </div>
+                    <div class="bottomCen">
+                        <a href=""><span>冰箱</span></a>
+                        <a href=""><span>滚筒洗衣机</span></a>
+                        <a href=""><span>格力三代手机</span></a>
+                        <a href=""><span>金贝</span></a>
+                    </div>
+                </div>
+                <div class="rightCenter">
+                    <div class="buttonShop">
+                        <span><img src="./images/cart_empty.png" alt=""></span>
+                        <a>
+                            购物车
+                            <span class="sum">(0)</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="trolley" id="trolley">
+                    <div class="title">最新加入的商品</div>
+                    <div class="content">
+                        <ul>
+                            <!-- <li id="4">
+                                <div class="leftBox">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <div class="imgBox">
+                                    <img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/goods/2020/10/1/bb6582f6-311c-4147-b221-5c620d3229ecjpg" alt="">
+                                </div>
+                                <div class="centerBox">
+                                    <p>晶弘三门冰箱 变频318L 高效节能 美味如初 BCD-318WPT...</p>
+                                    <p class="color">颜色:时代金</p>
+                                </div>
+                                <div class="rightBox">
+                                    <p><span>2429</span>*1</p>
+                                    <a href="">删除</a>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <input type="checkbox" name="" id="checkbox"><i>全选</i>
+                        <span>批量删除选择的商品</span>
+                        <button>去购物车结账</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="fHeader">
+            <div class="title">
+                <h2>
+                    <a href="">
+                        <i class="iconfont icon-liebiao"></i>
+                        全部商品分类
+                    </a>
+                </h2>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="">精品冰洗</a></li>
+                    <li><a href="">健康家电</a></li>
+                    <li><a href="">当季优选</a></li>
+                    <li><a href="">精品生活电器</a></li>
+                    <li><a href="">精品空调</a></li>
+                    <li><a href="">衡温空调</a></li>
+                    <li><a href="">风广自然凉</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="goods">
+        <div class="mar">
+            <div class="title">
+                <img src="./images/caidan.png" alt="">
+                <span>搜索出的商品共0件</span>
+            </div>
+        </div>
+        <div class="leftGoods">
+               <dl>
+                   <dt>所有类目</dt>
+               </dl>
+               <dd>
+                   <span>冰箱</span>
+                   <i class="iconfont icon-Group"></i>
+               </dd>
+               <ul>
+                   <li>
+                        <i class="iconfont icon-jiantou"></i>
+                        双门
+                   </li>
+               </ul> 
+        </div>
+        <div class="total">
+            <div class="first">
+                <div>商品筛选</div>
+                <div>品牌</div>
+                <div class="third">
+                        <div class="list1">所有品牌</div>
+                        <div class="list">晶弘</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search">
+             <ul class="left">
+                 <li class="goodsList">
+                     销售数量
+                    <i class="iconfont icon-xiangxiajiantou"></i>
+                 </li>
+                 <li class="goodsList">
+                    评价分数
+                    <i class="iconfont icon-xiangxiajiantou"></i>
+                 </li>
+                 <li class="goodsList">
+                    上架时间
+                    <i class="iconfont icon-xiangxiajiantou"></i>
+                 </li>
+                 <li class="goodsList">
+                    商品价格
+                    <i class="iconfont icon-xiangxiajiantou"></i>
+                 </li>
+             </ul>
+             <ul class="right">
+                 <li class="goodsList">
+                     共<strong>43</strong>个商品
+                 </li>
+                 <li class="goodsList">
+                     <strong>1</strong>/2
+                 </li>
+                 <li class="goodsList">上一页</li>
+                 <li class="goodsList">下一页</li>
+             </ul>   
+        </div>
+        <div class="search_list">
+              <!--<div class="product">
+               <div class="big_img">
+                    <a href="" target="_blank">
+                        <img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/goods/2020/10/1/bb6582f6-311c-4147-b221-5c620d3229ecjpg" style="width: 220px; height: 220px;">
+                    </a>
+                </div>
+                <div class="n_font">
+                    <p class="fl">
+                        <a target="_blank" href="">
+                            晶弘两门冰箱 198L 风冷无霜 电脑控温 BCD-198WEC 时...
+                        </a>
+                    </p>
+                </div>
+                <div class="score">
+                    <span class="over_ell">
+                        <a href="" target="_blank" class="over_ell" title="格力董明珠店">格力董明珠店</a>
+                    </span>
+                </div>
+                <div class="price">
+                    <strong>￥2429.00</strong>
+                    <i class="iconfont icon-baoyoux"></i><br>
+                    <span style="word-break: keep-all">&nbsp;已有<span style="color: #ff0000">4584</span>人购买</span>
+                </div>
+                <div class="score">
+                     <a class="car" href="" id="0">加入购物车</a>
+                </div>
+            </div> -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footerImg">
+        </div>
+        <div class="footerBottom">
+            <div class="question">
+                <ul>
+                    购物指南
+                    <li><a>格力境外购买须知</a></li>
+                    <li><a>免责声明</a></li>
+                </ul>
+                <ul>
+                    售后服务
+                    <li><a href="">服务生效</a></li>
+                    <li><a href="">安装/维修</a></li>
+                </ul>
+                <ul>
+                    常见问题
+                    <li><a href="">空调内机条码获取方法</a></li>
+                    <li><a href="">订单常见问题说明</a></li>
+                    <li><a href="">空调常见问题说明</a></li>
+                    <li><a href="">冰箱常见问题说明</a></li>
+                </ul>
+                <ul>
+                    联系我们
+                    <li><a href="">联系我们</a></li>
+                </ul>
+                <ul>
+                    服务查询
+                    <li><a href="">配送服务查询</a></li>
+                </ul>
+                <ul>
+                    商城支付
+                    <li><a href="">商城支付</a></li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <p>珠海格力电器股份有限公司版权所有 粤ICP备05006515号</p>
+                <img src="./images/footer_04.png" alt="">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

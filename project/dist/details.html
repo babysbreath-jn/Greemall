@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/details.css">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <script src="./js/magnifying.js"></script>
+    <script src="./js/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("#li1").click(function(){
+                $("#images img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/goods/2020/10/1/bb6582f6-311c-4147-b221-5c620d3229ecjpg");
+            })
+            $("#li2").click(function(){
+                $("#images img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/5d8c96f9-63bf-4b2f-b1c2-2726dd86fb65.jpg"); 
+                $("#magnify img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/5d8c96f9-63bf-4b2f-b1c2-2726dd86fb65.jpg");
+            })
+            $("#li3").click(function(){
+                $("#images img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/8a01ede6-454c-4f29-9201-6d635c6dd2d4.jpg");
+                $("#magnify img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/8a01ede6-454c-4f29-9201-6d635c6dd2d4.jpg");
+            })
+            $("#li4").click(function(){
+                $("#images img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/7d9556b6-cb5a-45d4-8f52-f4ed03c5984a.jpg");
+                $("#magnify img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/7d9556b6-cb5a-45d4-8f52-f4ed03c5984a.jpg");
+            })
+            $("#li5").click(function(){
+                $("#images img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/1e4486f5-099f-4b64-acc4-49bb58570b08.jpg");
+                $("#magnify img").attr("src","https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/1e4486f5-099f-4b64-acc4-49bb58570b08.jpg");
+            })
+
+            
+        })
+    </script>
+</head>
+<body>
+    <!-- 导航 -->
+    <header id="top">
+        <div class="tHeader">
+            <div class="topHeader">
+                <div class="leftTop">
+                    <ul>
+                        <li>
+                            <a href="">登录</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">注册</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">移动端下载</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">卖家移动端下载</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rightTop">
+                    <ul>
+                        <li>
+                            <a href="./index.html">商城首页</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">我的订单</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">开店申请</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">注册分销商</a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="iconfont icon-collection-b collect"></i>我的收藏
+                            </a>
+                            <span>|</span>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="iconfont icon-05 service"></i>客服中心
+                            </a>
+                            <span>|</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>  
+        <div class="cHeader">
+            <div class="centerHeader">
+                <div class="leftCenter">
+                    <a href=""><img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2020/4/2/86f141a8-3876-4568-86f0-3c343430775c.gif" alt=""></a>
+                </div>
+                <div class="center">
+                    <div class="leftCen">
+                        <div class="option">
+                            <span>商品</span>
+                            <i class="iconfont icon-RectangleCopy"></i>
+                        </div>
+                        <div class="middle">
+                            <input type="text" placeholder="请输入你的信息">
+                        </div>
+                        <button class="rightBtn">
+                            <i class="iconfont icon-sousuo"></i>
+                        </button>
+                    </div>
+                    <div class="rightCen">
+                        <img src="./images/headicon.png" alt="">
+                    </div>
+                    <div class="bottomCen">
+                        <a href=""><span>冰箱</span></a>
+                        <a href=""><span>滚筒洗衣机</span></a>
+                        <a href=""><span>格力三代手机</span></a>
+                        <a href=""><span>金贝</span></a>
+                    </div>
+                </div>
+                <div class="rightCenter">
+                    <div class="buttonShop">
+                        <span><img src="./images/cart_empty.png" alt=""></span>
+                        <a href="">
+                            购物车
+                            (<span>0</span>)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fHeader">
+            <div class="title">
+                <h2>
+                    <a href="">
+                        <i class="iconfont icon-liebiao"></i>
+                        全部商品分类
+                    </a>
+                </h2>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="">精品冰洗</a></li>
+                    <li><a href="">健康家电</a></li>
+                    <li><a href="">当季优选</a></li>
+                    <li><a href="">精品生活电器</a></li>
+                    <li><a href="">精品空调</a></li>
+                    <li><a href="">衡温空调</a></li>
+                    <li><a href="">风广自然凉</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 内容区 -->
+    <main>
+        <div class="content">
+            <div class="box">
+                <div class="titleBox">
+                    <div class="title">
+                        <a href="" class="fridge">冰箱</a>><a href="">冰箱</a>><a href="">双门</a>><a href="">晶弘两门冰箱 198L 风冷无霜 电脑控温 BCD-198WEC 时代金</a>
+                    </div>
+                </div>
+                
+                <div class="left_images">
+                    <div class="images" id="images">
+                        <img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/goods/2020/10/1/bb6582f6-311c-4147-b221-5c620d3229ecjpg" alt="">
+                        <div class="dark" id="mark"></div>
+                    </div>                    
+                    <div id="smallImg">
+                        <p id="left"><i><</i></p>
+                        <div id="center">
+                            <ul id="cn" style="width: 435px;">
+                                <li id="li1"><img id="img1" src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/goods/2020/10/1/bb6582f6-311c-4147-b221-5c620d3229ecjpg" alt=""></li>
+                                <li id="li2"><img id="img2" src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/5d8c96f9-63bf-4b2f-b1c2-2726dd86fb65.jpg" alt=""></li>
+                                <li id="li3"><img id="img3" src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/8a01ede6-454c-4f29-9201-6d635c6dd2d4.jpg" alt=""></li>
+                                <li id="li4"><img id="img4" src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/7d9556b6-cb5a-45d4-8f52-f4ed03c5984a.jpg" alt=""></li>
+                                <li id="li5"><img id="img5" src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2019/1/27/1e4486f5-099f-4b64-acc4-49bb58570b08.jpg" alt=""></li>	  
+                            </ul>
+                        </div>
+                        <p id="right"><i>></i></p>
+                    </div>
+                    <div class="collect">
+                        <span>
+                            <i class="iconfont icon-collection-b"></i>
+                            <a href="">收藏商品</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="magnify" id="magnify">
+                    <img src="https://gelimall.oss-cn-shenzhen.aliyuncs.com/album/2020/6/19/286d9691-eeec-4d15-9530-e8558d687cd4.jpg" alt="" id="img">
+                </div>
+
+                <div class="rightContent">
+                    <div class="min_title">
+                        <h1>
+                            晶弘两门冰箱 198L 风冷无霜 电脑控温 BCD-198WEC 时代金     
+                        </h1>
+                        <p>风冷无霜，离子长效净味，精准电脑控温，一体化U型箱体</p>
+                    </div>
+                    <div class="mid_font">
+                        <ul>
+                            <li>
+                                <div class="left">
+                                    售价:
+                                </div>
+                                <div class="right"><strong>￥2429.00</strong></div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    促销信息:
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">商品评分:</div>
+                                <div class="right">
+                                    <i class="iconfont icon-xingxing"></i>
+                                    <i class="iconfont icon-xingxing"></i>
+                                    <i class="iconfont icon-xingxing"></i>
+                                    <i class="iconfont icon-xingxing"></i>
+                                    <i class="iconfont icon-xingxing"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">好评率:</div>
+                                <div class="right">99%</div>
+                            </li> 
+                            <li>
+                                <div class="left">累计销量:</div>
+                                <div class="right">4582件</div>
+                            </li>
+                            <li>
+                                <div class="left">配送至:</div>
+                                <div class="right">
+                                    <div class="location">
+                                        <span>北京市</span>
+                                        <em class="iconfont icon-xiala"></em>
+                                    </div>
+                                    <div class="postage">包邮</div>
+                                </div>
+                                <i class="send">由格力董明珠店发货</i>
+                            </li>
+                            <li>
+                                <div class="left">颜色:</div>
+                                <div class="right">
+                                    <span class="color">
+                                        浮光金
+                                        <b class="check">
+                                            <img src="./images/pigeon.png" alt="">
+                                        </b>
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">数量:</div>
+                                <div class="right">
+                                    <div class="count">
+                                        <a href="" class="subtract">-</a>
+                                        <input type="text" value="1">
+                                        <a href="" class="add">+</a>
+                                    </div>
+                                    <div class="goods">有货</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btns">
+                        <div class="cart">
+                            <span class="iconfont icon-chat-gray-copy"></span>
+                            加入购物车
+                        </div>
+                        <div class="buy">
+                            <a href="" title="点击此按钮，到下一步确认购买信息。">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="mid_font">
+                        <ul>
+                            <li>
+                                <div class="left">支付:</div>
+                                <div class="right">
+                                    <strong class="iconfont icon-qianbao"></strong>
+                                    立即支付
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="move">
+                        <a href="">移动端商品链接</a>
+                    </div>
+                    <div class="rightmost">
+                        <h3>商家信息</h3>
+                        <ul>
+                            <li class="message">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <em>服务评价:</em>
+                                            <span>
+                                                <i class="heart"></i>
+                                                <i class="heart"></i>
+                                                <i class="heart"></i>
+                                                <i class="heart"></i>
+                                                <i class="heart"></i>
+                                            </span>
+                                            <b>4.9分</b>
+                                        </li>
+                                        <li>
+                                            <em>描述相符:</em>
+                                            <span>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="starh"></i>
+                                            </span>
+                                            <b>4.9分</b>
+                                        </li>
+                                        <li>
+                                            <em>发货速度:</em>
+                                            <span>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                            </span>
+                                            <b>5.0分</b>
+                                        </li>
+                                        <li>
+                                            <em>态度服务:</em>
+                                            <span>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                                <i class="star"></i>
+                                            </span>
+                                            <b>5.0分</b>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="logoL">
+                                <a href="">
+                                    <img src="./images/logo.jpg" alt="">
+                                </a>
+                            </li>
+                            <li class="left">店铺名称:</li>
+                            <li class="right">格力董明珠店</li>
+                            <li class="left">公司名称:</li>
+                            <li class="right">格力电子商务有限公司</li>
+                            <li class="left">所&nbsp;在&nbsp;地&nbsp;:</li>
+                            <li class="right">广东省珠海市香洲区金鸡西路格力电器</li>
+                            <li class="left">客服电话:</li>
+                            <li class="right_phone">4008365315转7号键</li>
+                            <li class="right2">
+                                <a href="">进入卖家店铺</a>
+                                <a href="">收藏店铺</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightBroad">
+            <div class="cartBox">
+                购物车
+                <img src="./images/basic_icon_cart.png" alt="">
+            </div>
+            <div class="serviceBox">
+                客服中心
+                <img src="./images/custom_online.png" alt="">
+            </div>
+            <div class="topBox">
+                <a href="#top">返回顶部</a>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="footerBottom">
+            <div class="question">
+                <ul>
+                    购物指南
+                    <li><a>格力境外购买须知</a></li>
+                    <li><a>免责声明</a></li>
+                </ul>
+                <ul>
+                    售后服务
+                    <li><a href="">服务生效</a></li>
+                    <li><a href="">安装/维修</a></li>
+                </ul>
+                <ul>
+                    常见问题
+                    <li><a href="">空调内机条码获取方法</a></li>
+                    <li><a href="">订单常见问题说明</a></li>
+                    <li><a href="">空调常见问题说明</a></li>
+                    <li><a href="">冰箱常见问题说明</a></li>
+                </ul>
+                <ul>
+                    联系我们
+                    <li><a href="">联系我们</a></li>
+                </ul>
+                <ul>
+                    服务查询
+                    <li><a href="">配送服务查询</a></li>
+                </ul>
+                <ul>
+                    商城支付
+                    <li><a href="">商城支付</a></li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <p>珠海格力电器股份有限公司版权所有 粤ICP备05006515号</p>
+                <img src="./images/footer_04.png" alt="">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
